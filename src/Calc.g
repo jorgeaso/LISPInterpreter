@@ -15,7 +15,8 @@ prog
 
 com
 	:	PUT v=expr EOL       { System.out.println($v.value); }
-	|	'(' SETQ ID v=expr ')' EOL         { int a =
+	|	SET ID ASSN
+		  v=expr EOL         { int a =
 		                         $ID.text.charAt(0) - 'a'; 
 		                       store[a] = $v.value; }
 	;
@@ -43,7 +44,7 @@ term		                     returns [int value]
 // Lexicon
 
 PUT	:	'put' ;
-SETQ	:	'setq' ;
+SET	:	'set' ;
 
 ASSN	:	'=' ;
 PLUS	:	'+' ;
