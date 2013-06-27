@@ -1,4 +1,4 @@
-// $ANTLR 3.5 /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g 2013-06-27 14:01:50
+// $ANTLR 3.5 /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g 2013-06-27 15:59:06
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class CalcParser extends Parser {
 	public static final String[] tokenNames = new String[] {
 		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "ASSN", "EOL", "ID", "LPAR", "MINUS", 
-		"NUM", "PLUS", "PUT", "QUOTIENT", "RPAR", "SET", "SPACE", "TIMES"
+		"NUM", "PLUS", "PUT", "QUOTIENT", "RPAR", "SETQ", "SPACE", "TIMES"
 	};
 	public static final int EOF=-1;
 	public static final int ASSN=4;
@@ -22,7 +22,7 @@ public class CalcParser extends Parser {
 	public static final int PUT=11;
 	public static final int QUOTIENT=12;
 	public static final int RPAR=13;
-	public static final int SET=14;
+	public static final int SETQ=14;
 	public static final int SPACE=15;
 	public static final int TIMES=16;
 
@@ -45,7 +45,7 @@ public class CalcParser extends Parser {
 	@Override public String getGrammarFileName() { return "/Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g"; }
 
 
-		private int[] store = new int[26];
+		private int[] store = new int[26]; // implement hashmap
 		// ... storage for variables 'a', ..., 'z'
 
 
@@ -62,7 +62,7 @@ public class CalcParser extends Parser {
 			while (true) {
 				int alt1=2;
 				int LA1_0 = input.LA(1);
-				if ( (LA1_0==PUT||LA1_0==SET) ) {
+				if ( (LA1_0==LPAR||LA1_0==PUT) ) {
 					alt1=1;
 				}
 
@@ -99,19 +99,19 @@ public class CalcParser extends Parser {
 
 
 	// $ANTLR start "com"
-	// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:16:1: com : ( PUT v= expr EOL | SET ID ASSN v= expr EOL );
+	// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:16:1: com : ( PUT v= expr EOL | '(' SETQ ID v= expr ')' EOL );
 	public final void com() throws RecognitionException {
 		Token ID1=null;
 		int v =0;
 
 		try {
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:17:2: ( PUT v= expr EOL | SET ID ASSN v= expr EOL )
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:17:2: ( PUT v= expr EOL | '(' SETQ ID v= expr ')' EOL )
 			int alt2=2;
 			int LA2_0 = input.LA(1);
 			if ( (LA2_0==PUT) ) {
 				alt2=1;
 			}
-			else if ( (LA2_0==SET) ) {
+			else if ( (LA2_0==LPAR) ) {
 				alt2=2;
 			}
 
@@ -135,16 +135,17 @@ public class CalcParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:18:4: SET ID ASSN v= expr EOL
+					// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:18:4: '(' SETQ ID v= expr ')' EOL
 					{
-					match(input,SET,FOLLOW_SET_in_com54); 
-					ID1=(Token)match(input,ID,FOLLOW_ID_in_com56); 
-					match(input,ASSN,FOLLOW_ASSN_in_com58); 
-					pushFollow(FOLLOW_expr_in_com66);
+					match(input,LPAR,FOLLOW_LPAR_in_com54); 
+					match(input,SETQ,FOLLOW_SETQ_in_com56); 
+					ID1=(Token)match(input,ID,FOLLOW_ID_in_com58); 
+					pushFollow(FOLLOW_expr_in_com62);
 					v=expr();
 					state._fsp--;
 
-					match(input,EOL,FOLLOW_EOL_in_com68); 
+					match(input,RPAR,FOLLOW_RPAR_in_com64); 
+					match(input,EOL,FOLLOW_EOL_in_com66); 
 					 int a =
 							                         (ID1!=null?ID1.getText():null).charAt(0) - 'a'; 
 							                       store[a] = v; 
@@ -166,7 +167,7 @@ public class CalcParser extends Parser {
 
 
 	// $ANTLR start "expr"
-	// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:26:1: expr returns [int value] : v1= term ( PLUS v2= term | MINUS v2= term | TIMES v2= term | QUOTIENT v2= term )* ;
+	// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:25:1: expr returns [int value] : v1= term ( PLUS v2= term | MINUS v2= term | TIMES v2= term | QUOTIENT v2= term )* ;
 	public final int expr() throws RecognitionException {
 		int value = 0;
 
@@ -175,15 +176,15 @@ public class CalcParser extends Parser {
 		int v2 =0;
 
 		try {
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:27:2: (v1= term ( PLUS v2= term | MINUS v2= term | TIMES v2= term | QUOTIENT v2= term )* )
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:27:4: v1= term ( PLUS v2= term | MINUS v2= term | TIMES v2= term | QUOTIENT v2= term )*
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:26:2: (v1= term ( PLUS v2= term | MINUS v2= term | TIMES v2= term | QUOTIENT v2= term )* )
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:26:4: v1= term ( PLUS v2= term | MINUS v2= term | TIMES v2= term | QUOTIENT v2= term )*
 			{
-			pushFollow(FOLLOW_term_in_expr119);
+			pushFollow(FOLLOW_term_in_expr117);
 			v1=term();
 			state._fsp--;
 
 			 value = v1; 
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:28:3: ( PLUS v2= term | MINUS v2= term | TIMES v2= term | QUOTIENT v2= term )*
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:27:3: ( PLUS v2= term | MINUS v2= term | TIMES v2= term | QUOTIENT v2= term )*
 			loop3:
 			while (true) {
 				int alt3=5;
@@ -211,10 +212,10 @@ public class CalcParser extends Parser {
 				}
 				switch (alt3) {
 				case 1 :
-					// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:28:5: PLUS v2= term
+					// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:27:5: PLUS v2= term
 					{
-					match(input,PLUS,FOLLOW_PLUS_in_expr140); 
-					pushFollow(FOLLOW_term_in_expr144);
+					match(input,PLUS,FOLLOW_PLUS_in_expr138); 
+					pushFollow(FOLLOW_term_in_expr142);
 					v2=term();
 					state._fsp--;
 
@@ -222,10 +223,10 @@ public class CalcParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:29:5: MINUS v2= term
+					// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:28:5: MINUS v2= term
 					{
-					match(input,MINUS,FOLLOW_MINUS_in_expr158); 
-					pushFollow(FOLLOW_term_in_expr162);
+					match(input,MINUS,FOLLOW_MINUS_in_expr156); 
+					pushFollow(FOLLOW_term_in_expr160);
 					v2=term();
 					state._fsp--;
 
@@ -233,10 +234,10 @@ public class CalcParser extends Parser {
 					}
 					break;
 				case 3 :
-					// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:30:5: TIMES v2= term
+					// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:29:5: TIMES v2= term
 					{
-					match(input,TIMES,FOLLOW_TIMES_in_expr175); 
-					pushFollow(FOLLOW_term_in_expr179);
+					match(input,TIMES,FOLLOW_TIMES_in_expr173); 
+					pushFollow(FOLLOW_term_in_expr177);
 					v2=term();
 					state._fsp--;
 
@@ -244,10 +245,10 @@ public class CalcParser extends Parser {
 					}
 					break;
 				case 4 :
-					// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:31:19: QUOTIENT v2= term
+					// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:30:19: QUOTIENT v2= term
 					{
-					match(input,QUOTIENT,FOLLOW_QUOTIENT_in_expr206); 
-					pushFollow(FOLLOW_term_in_expr210);
+					match(input,QUOTIENT,FOLLOW_QUOTIENT_in_expr204); 
+					pushFollow(FOLLOW_term_in_expr208);
 					v2=term();
 					state._fsp--;
 
@@ -277,7 +278,7 @@ public class CalcParser extends Parser {
 
 
 	// $ANTLR start "term"
-	// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:35:1: term returns [int value] : ( NUM | ID | LPAR v= expr RPAR );
+	// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:34:1: term returns [int value] : ( NUM | ID | LPAR v= expr RPAR );
 	public final int term() throws RecognitionException {
 		int value = 0;
 
@@ -287,7 +288,7 @@ public class CalcParser extends Parser {
 		int v =0;
 
 		try {
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:36:2: ( NUM | ID | LPAR v= expr RPAR )
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:35:2: ( NUM | ID | LPAR v= expr RPAR )
 			int alt4=3;
 			switch ( input.LA(1) ) {
 			case NUM:
@@ -312,31 +313,31 @@ public class CalcParser extends Parser {
 			}
 			switch (alt4) {
 				case 1 :
-					// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:36:4: NUM
+					// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:35:4: NUM
 					{
-					NUM2=(Token)match(input,NUM,FOLLOW_NUM_in_term256); 
+					NUM2=(Token)match(input,NUM,FOLLOW_NUM_in_term254); 
 					 value = Integer.parseInt(
 							                         (NUM2!=null?NUM2.getText():null)); 
 					}
 					break;
 				case 2 :
-					// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:38:4: ID
+					// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:37:4: ID
 					{
-					ID3=(Token)match(input,ID,FOLLOW_ID_in_term280); 
+					ID3=(Token)match(input,ID,FOLLOW_ID_in_term278); 
 					 int a =
 							                         (ID3!=null?ID3.getText():null).charAt(0) - 'a'; 
 							                       value = store[a]; 
 					}
 					break;
 				case 3 :
-					// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:41:4: LPAR v= expr RPAR
+					// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:40:4: LPAR v= expr RPAR
 					{
-					match(input,LPAR,FOLLOW_LPAR_in_term305); 
-					pushFollow(FOLLOW_expr_in_term309);
+					match(input,LPAR,FOLLOW_LPAR_in_term303); 
+					pushFollow(FOLLOW_expr_in_term307);
 					v=expr();
 					state._fsp--;
 
-					match(input,RPAR,FOLLOW_RPAR_in_term311); 
+					match(input,RPAR,FOLLOW_RPAR_in_term309); 
 					 value = v; 
 					}
 					break;
@@ -358,28 +359,29 @@ public class CalcParser extends Parser {
 
 
 
-	public static final BitSet FOLLOW_com_in_prog19 = new BitSet(new long[]{0x0000000000004800L});
+	public static final BitSet FOLLOW_com_in_prog19 = new BitSet(new long[]{0x0000000000000880L});
 	public static final BitSet FOLLOW_EOF_in_prog22 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_PUT_in_com35 = new BitSet(new long[]{0x00000000000002C0L});
 	public static final BitSet FOLLOW_expr_in_com39 = new BitSet(new long[]{0x0000000000000020L});
 	public static final BitSet FOLLOW_EOL_in_com41 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SET_in_com54 = new BitSet(new long[]{0x0000000000000040L});
-	public static final BitSet FOLLOW_ID_in_com56 = new BitSet(new long[]{0x0000000000000010L});
-	public static final BitSet FOLLOW_ASSN_in_com58 = new BitSet(new long[]{0x00000000000002C0L});
-	public static final BitSet FOLLOW_expr_in_com66 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_EOL_in_com68 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_term_in_expr119 = new BitSet(new long[]{0x0000000000011502L});
-	public static final BitSet FOLLOW_PLUS_in_expr140 = new BitSet(new long[]{0x00000000000002C0L});
-	public static final BitSet FOLLOW_term_in_expr144 = new BitSet(new long[]{0x0000000000011502L});
-	public static final BitSet FOLLOW_MINUS_in_expr158 = new BitSet(new long[]{0x00000000000002C0L});
-	public static final BitSet FOLLOW_term_in_expr162 = new BitSet(new long[]{0x0000000000011502L});
-	public static final BitSet FOLLOW_TIMES_in_expr175 = new BitSet(new long[]{0x00000000000002C0L});
-	public static final BitSet FOLLOW_term_in_expr179 = new BitSet(new long[]{0x0000000000011502L});
-	public static final BitSet FOLLOW_QUOTIENT_in_expr206 = new BitSet(new long[]{0x00000000000002C0L});
-	public static final BitSet FOLLOW_term_in_expr210 = new BitSet(new long[]{0x0000000000011502L});
-	public static final BitSet FOLLOW_NUM_in_term256 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_term280 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LPAR_in_term305 = new BitSet(new long[]{0x00000000000002C0L});
-	public static final BitSet FOLLOW_expr_in_term309 = new BitSet(new long[]{0x0000000000002000L});
-	public static final BitSet FOLLOW_RPAR_in_term311 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LPAR_in_com54 = new BitSet(new long[]{0x0000000000004000L});
+	public static final BitSet FOLLOW_SETQ_in_com56 = new BitSet(new long[]{0x0000000000000040L});
+	public static final BitSet FOLLOW_ID_in_com58 = new BitSet(new long[]{0x00000000000002C0L});
+	public static final BitSet FOLLOW_expr_in_com62 = new BitSet(new long[]{0x0000000000002000L});
+	public static final BitSet FOLLOW_RPAR_in_com64 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_EOL_in_com66 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_term_in_expr117 = new BitSet(new long[]{0x0000000000011502L});
+	public static final BitSet FOLLOW_PLUS_in_expr138 = new BitSet(new long[]{0x00000000000002C0L});
+	public static final BitSet FOLLOW_term_in_expr142 = new BitSet(new long[]{0x0000000000011502L});
+	public static final BitSet FOLLOW_MINUS_in_expr156 = new BitSet(new long[]{0x00000000000002C0L});
+	public static final BitSet FOLLOW_term_in_expr160 = new BitSet(new long[]{0x0000000000011502L});
+	public static final BitSet FOLLOW_TIMES_in_expr173 = new BitSet(new long[]{0x00000000000002C0L});
+	public static final BitSet FOLLOW_term_in_expr177 = new BitSet(new long[]{0x0000000000011502L});
+	public static final BitSet FOLLOW_QUOTIENT_in_expr204 = new BitSet(new long[]{0x00000000000002C0L});
+	public static final BitSet FOLLOW_term_in_expr208 = new BitSet(new long[]{0x0000000000011502L});
+	public static final BitSet FOLLOW_NUM_in_term254 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_term278 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LPAR_in_term303 = new BitSet(new long[]{0x00000000000002C0L});
+	public static final BitSet FOLLOW_expr_in_term307 = new BitSet(new long[]{0x0000000000002000L});
+	public static final BitSet FOLLOW_RPAR_in_term309 = new BitSet(new long[]{0x0000000000000002L});
 }

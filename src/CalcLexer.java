@@ -1,4 +1,4 @@
-// $ANTLR 3.5 /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g 2013-06-27 14:01:51
+// $ANTLR 3.5 /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g 2013-06-27 15:59:07
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -18,7 +18,7 @@ public class CalcLexer extends Lexer {
 	public static final int PUT=11;
 	public static final int QUOTIENT=12;
 	public static final int RPAR=13;
-	public static final int SET=14;
+	public static final int SETQ=14;
 	public static final int SPACE=15;
 	public static final int TIMES=16;
 
@@ -42,8 +42,8 @@ public class CalcLexer extends Lexer {
 		try {
 			int _type = PUT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:46:5: ( 'put' )
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:46:7: 'put'
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:45:5: ( 'put' )
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:45:7: 'put'
 			{
 			match("put"); 
 
@@ -58,15 +58,15 @@ public class CalcLexer extends Lexer {
 	}
 	// $ANTLR end "PUT"
 
-	// $ANTLR start "SET"
-	public final void mSET() throws RecognitionException {
+	// $ANTLR start "SETQ"
+	public final void mSETQ() throws RecognitionException {
 		try {
-			int _type = SET;
+			int _type = SETQ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:47:5: ( 'set' )
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:47:7: 'set'
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:46:6: ( 'setq' )
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:46:8: 'setq'
 			{
-			match("set"); 
+			match("setq"); 
 
 			}
 
@@ -77,15 +77,15 @@ public class CalcLexer extends Lexer {
 			// do for sure before leaving
 		}
 	}
-	// $ANTLR end "SET"
+	// $ANTLR end "SETQ"
 
 	// $ANTLR start "ASSN"
 	public final void mASSN() throws RecognitionException {
 		try {
 			int _type = ASSN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:49:6: ( '=' )
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:49:8: '='
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:48:6: ( '=' )
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:48:8: '='
 			{
 			match('='); 
 			}
@@ -104,8 +104,8 @@ public class CalcLexer extends Lexer {
 		try {
 			int _type = PLUS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:50:6: ( '+' )
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:50:8: '+'
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:49:6: ( '+' )
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:49:8: '+'
 			{
 			match('+'); 
 			}
@@ -124,8 +124,8 @@ public class CalcLexer extends Lexer {
 		try {
 			int _type = MINUS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:51:7: ( '-' )
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:51:9: '-'
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:50:7: ( '-' )
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:50:9: '-'
 			{
 			match('-'); 
 			}
@@ -144,8 +144,8 @@ public class CalcLexer extends Lexer {
 		try {
 			int _type = TIMES;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:52:7: ( '*' )
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:52:9: '*'
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:51:7: ( '*' )
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:51:9: '*'
 			{
 			match('*'); 
 			}
@@ -164,8 +164,8 @@ public class CalcLexer extends Lexer {
 		try {
 			int _type = QUOTIENT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:53:13: ( '/' )
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:53:17: '/'
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:52:13: ( '/' )
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:52:17: '/'
 			{
 			match('/'); 
 			}
@@ -184,8 +184,8 @@ public class CalcLexer extends Lexer {
 		try {
 			int _type = LPAR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:54:6: ( '(' )
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:54:8: '('
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:53:6: ( '(' )
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:53:8: '('
 			{
 			match('('); 
 			}
@@ -204,8 +204,8 @@ public class CalcLexer extends Lexer {
 		try {
 			int _type = RPAR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:55:6: ( ')' )
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:55:8: ')'
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:54:6: ( ')' )
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:54:8: ')'
 			{
 			match(')'); 
 			}
@@ -224,10 +224,10 @@ public class CalcLexer extends Lexer {
 		try {
 			int _type = ID;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:57:4: ( ( 'a' .. 'z' )+ )
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:57:6: ( 'a' .. 'z' )+
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:56:4: ( ( 'a' .. 'z' )+ )
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:56:6: ( 'a' .. 'z' )+
 			{
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:57:6: ( 'a' .. 'z' )+
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:56:6: ( 'a' .. 'z' )+
 			int cnt1=0;
 			loop1:
 			while (true) {
@@ -276,10 +276,10 @@ public class CalcLexer extends Lexer {
 		try {
 			int _type = NUM;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:58:5: ( ( '0' .. '9' )+ )
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:58:7: ( '0' .. '9' )+
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:57:5: ( ( '0' .. '9' )+ )
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:57:7: ( '0' .. '9' )+
 			{
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:58:7: ( '0' .. '9' )+
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:57:7: ( '0' .. '9' )+
 			int cnt2=0;
 			loop2:
 			while (true) {
@@ -328,10 +328,10 @@ public class CalcLexer extends Lexer {
 		try {
 			int _type = EOL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:60:5: ( ( '\\r' )? '\\n' )
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:60:7: ( '\\r' )? '\\n'
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:59:5: ( ( '\\r' )? '\\n' )
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:59:7: ( '\\r' )? '\\n'
 			{
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:60:7: ( '\\r' )?
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:59:7: ( '\\r' )?
 			int alt3=2;
 			int LA3_0 = input.LA(1);
 			if ( (LA3_0=='\r') ) {
@@ -339,7 +339,7 @@ public class CalcLexer extends Lexer {
 			}
 			switch (alt3) {
 				case 1 :
-					// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:60:7: '\\r'
+					// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:59:7: '\\r'
 					{
 					match('\r'); 
 					}
@@ -364,10 +364,10 @@ public class CalcLexer extends Lexer {
 		try {
 			int _type = SPACE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:62:7: ( ( ' ' | '\\t' )+ )
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:62:9: ( ' ' | '\\t' )+
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:61:7: ( ( ' ' | '\\t' )+ )
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:61:9: ( ' ' | '\\t' )+
 			{
-			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:62:9: ( ' ' | '\\t' )+
+			// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:61:9: ( ' ' | '\\t' )+
 			int cnt4=0;
 			loop4:
 			while (true) {
@@ -414,7 +414,7 @@ public class CalcLexer extends Lexer {
 
 	@Override
 	public void mTokens() throws RecognitionException {
-		// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:1:8: ( PUT | SET | ASSN | PLUS | MINUS | TIMES | QUOTIENT | LPAR | RPAR | ID | NUM | EOL | SPACE )
+		// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:1:8: ( PUT | SETQ | ASSN | PLUS | MINUS | TIMES | QUOTIENT | LPAR | RPAR | ID | NUM | EOL | SPACE )
 		int alt5=13;
 		switch ( input.LA(1) ) {
 		case 'p':
@@ -453,12 +453,20 @@ public class CalcLexer extends Lexer {
 				int LA5_15 = input.LA(3);
 				if ( (LA5_15=='t') ) {
 					int LA5_17 = input.LA(4);
-					if ( ((LA5_17 >= 'a' && LA5_17 <= 'z')) ) {
-						alt5=10;
+					if ( (LA5_17=='q') ) {
+						int LA5_19 = input.LA(5);
+						if ( ((LA5_19 >= 'a' && LA5_19 <= 'z')) ) {
+							alt5=10;
+						}
+
+						else {
+							alt5=2;
+						}
+
 					}
 
 					else {
-						alt5=2;
+						alt5=10;
 					}
 
 				}
@@ -578,84 +586,84 @@ public class CalcLexer extends Lexer {
 				}
 				break;
 			case 2 :
-				// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:1:14: SET
+				// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:1:14: SETQ
 				{
-				mSET(); 
+				mSETQ(); 
 
 				}
 				break;
 			case 3 :
-				// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:1:18: ASSN
+				// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:1:19: ASSN
 				{
 				mASSN(); 
 
 				}
 				break;
 			case 4 :
-				// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:1:23: PLUS
+				// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:1:24: PLUS
 				{
 				mPLUS(); 
 
 				}
 				break;
 			case 5 :
-				// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:1:28: MINUS
+				// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:1:29: MINUS
 				{
 				mMINUS(); 
 
 				}
 				break;
 			case 6 :
-				// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:1:34: TIMES
+				// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:1:35: TIMES
 				{
 				mTIMES(); 
 
 				}
 				break;
 			case 7 :
-				// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:1:40: QUOTIENT
+				// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:1:41: QUOTIENT
 				{
 				mQUOTIENT(); 
 
 				}
 				break;
 			case 8 :
-				// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:1:49: LPAR
+				// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:1:50: LPAR
 				{
 				mLPAR(); 
 
 				}
 				break;
 			case 9 :
-				// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:1:54: RPAR
+				// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:1:55: RPAR
 				{
 				mRPAR(); 
 
 				}
 				break;
 			case 10 :
-				// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:1:59: ID
+				// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:1:60: ID
 				{
 				mID(); 
 
 				}
 				break;
 			case 11 :
-				// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:1:62: NUM
+				// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:1:63: NUM
 				{
 				mNUM(); 
 
 				}
 				break;
 			case 12 :
-				// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:1:66: EOL
+				// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:1:67: EOL
 				{
 				mEOL(); 
 
 				}
 				break;
 			case 13 :
-				// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:1:70: SPACE
+				// /Users/jorgejaso/NetBeansProjects/Calc/src/Calc.g:1:71: SPACE
 				{
 				mSPACE(); 
 
